@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "types.common.v1.schema.json",
+  "title": "Hokusei Common Types v1",
+  "type": "object",
+  "additionalProperties": false,
+  "definitions": {
+    "Cluster": {
+      "type": "string",
+      "enum": ["TEAM", "REVENUE", "CUSTOMER"],
+      "description": "Top-level clusters"
+    },
+    "Archetype": {
+      "type": "string",
+      "enum": ["A_SPEED", "B_UX", "C_ROI"],
+      "description": "Planner path archetypes"
+    },
+    "AimId": {
+      "type": "string",
+      "pattern": "^(team|revenue|customer)-[a-z0-9-]+$",
+      "description": "e.g., team-role-clarity-cadence"
+    },
+    "MicroId": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+-[0-9]+$",
+      "description": "e.g., team-role-clarity-cadence-1"
+    },
+    "WeightPositive": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "WeightNegative": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 0
+    },
+    "BeliefEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["aimId", "weight"],
+      "properties": {
+        "aimId": { "$ref": "types.common.v1.schema.json#/definitions/AimId" },
+        "weight": { "$ref": "types.common.v1.schema.json#/definitions/WeightPositive" }
+      }
+    },
+    "NegativeEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["aimId", "risk", "severity", "cluster", "weight"],
+      "properties": {
+        "aimId": { "$ref": "types.common.v1.schema.json#/definitions/AimId" },
+        "risk": { "type": "string", "minLength": 1 },
+        "severity": { "type": "string", "enum": ["low", "medium", "high"] },
+        "cluster": { "$ref": "types.common.v1.schema.json#/definitions/Cluster" },
+        "weight": { "$ref": "types.common.v1.schema.json#/definitions/WeightNegative" }
+      }
+    }
+  }
+}

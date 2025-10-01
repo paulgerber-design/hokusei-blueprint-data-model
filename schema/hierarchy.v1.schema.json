@@ -1,0 +1,63 @@
+{
+  "$id": "hierarchy.v1.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hokusei AIM Hierarchy v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "pillars"],
+  "properties": {
+    "version": { "enum": ["aimhierarchy.v1", "hierarchy.v1"] },
+    "pillars": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/definitions/Pillar" }
+    },
+    "microBeliefs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Micro" }
+    }
+  },
+  "definitions": {
+    "Pillar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subs"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subs": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "$ref": "#/definitions/Sub" }
+        }
+      }
+    },
+    "Sub": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["micros"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "micros": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "$ref": "#/definitions/Micro" }
+        }
+      }
+    },
+    "Micro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string" },
+        "belief": { "type": "string" }
+      }
+    }
+  }
+}

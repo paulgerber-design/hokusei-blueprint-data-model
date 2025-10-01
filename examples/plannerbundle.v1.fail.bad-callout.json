@@ -1,0 +1,44 @@
+{
+  "version": "plannerbundle.v1",
+  "generatedAt": "2025-01-01T00:00:00Z",
+  "source": {
+    "aimVersion": "aimtable.v1",
+    "aimRef": "examples/aimtable.v1.pass.json",
+    "hierarchyVersion": "hierarchy.v1",
+    "hierarchyRef": "examples/hierarchy.v1.pass.json"
+  },
+  "projects": [
+    {
+      "id": "proj-demo",
+      "title": "Demo",
+      "paths": [
+        {
+          "id": "path-a",
+          "archetype": "A_SPEED",
+          "slices": [
+            {
+              "id": "slice-a",
+              "title": "Demo slice",
+              "status": "ready",
+              "effortDays": 1,
+              "aimNodeIds": ["team-role-clarity-cadence"],
+              "beliefEffects": [
+                { "aimId": "team-role-clarity-cadence", "weight": 0.6 }
+              ],
+              "callouts": {
+                "negativeEffects": [
+                  {
+                    "risk": "Intended failure: missing aimId",
+                    "severity": "medium",
+                    "cluster": "TEAM",
+                    "weight": -0.5
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

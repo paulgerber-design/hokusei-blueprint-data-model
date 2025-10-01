@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "plannerbundle.v1.schema.json",
+  "title": "PlannerBundle v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generatedAt", "source", "projects"],
+  "properties": {
+    "version": { "const": "plannerbundle.v1" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["aimVersion", "aimRef", "hierarchyVersion", "hierarchyRef"],
+      "properties": {
+        "aimVersion": { "const": "aimtable.v1" },
+        "aimRef": { "type": "string", "minLength": 1 },
+        "hierarchyVersion": { "const": "hierarchy.v1" },
+        "hierarchyRef": { "type": "string", "minLength": 1 }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/Project" }
+    }
+  },
+  "definitions": {
+    "Project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "paths"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "rationale": { "type": "string" },
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/Path" }
+        }
+      }
+    },
+    "Path": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "archetype", "slices"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "archetype": { "$ref": "types.common.v1.schema.json#/definitions/Archetype" },
+        "nextSliceId": { "type": "string" },
+        "slices": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/Slice" }
+        }
+      }
+    },
+    "Slice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "status", "effortDays", "aimNodeIds", "beliefEffects"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["ready", "blocked", "in-progress", "done"] },
+        "effortDays": { "type": "number", "minimum": 0 },
+        "aimNodeIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "types.common.v1.schema.json#/definitions/AimId" }
+        },
+        "beliefEffects": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "types.common.v1.schema.json#/definitions/BeliefEffect" }
+        },
+        "dependsOn": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "dod": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notes": { "type": "string" },
+        "evidenceMicroIds": {
+          "type": "array",
+          "items": { "$ref": "types.common.v1.schema.json#/definitions/MicroId" }
+        },
+        "callouts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "negativeEffects": {
+              "type": "array",
+              "items": { "$ref": "types.common.v1.schema.json#/definitions/NegativeEffect" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

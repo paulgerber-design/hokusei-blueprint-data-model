@@ -1,0 +1,53 @@
+{
+  "version": "plannerbundle.v1",
+  "generatedAt": "2025-01-01T00:00:00Z",
+  "source": {
+    "aimVersion": "aimtable.v1",
+    "aimRef": "examples/aimtable.v1.pass.json",
+    "hierarchyVersion": "hierarchy.v1",
+    "hierarchyRef": "examples/hierarchy.v1.pass.json"
+  },
+  "projects": [
+    {
+      "id": "proj-team-clarity",
+      "title": "Operate as a calm, fast crew (TEAM)",
+      "paths": [
+        {
+          "id": "path-a",
+          "archetype": "A_SPEED",
+          "nextSliceId": "slice-clarity-owner-date",
+          "slices": [
+            {
+              "id": "slice-clarity-owner-date",
+              "title": "Enforce owner + due date on every task",
+              "status": "ready",
+              "effortDays": 1,
+              "aimNodeIds": ["team-role-clarity-cadence"],
+              "beliefEffects": [
+                { "aimId": "team-role-clarity-cadence", "weight": 0.6 }
+              ],
+              "dependsOn": [],
+              "dod": [
+                "Tracker schema requires owner and due date on new tasks",
+                "Backfill 100% of open tasks",
+                "Spot‑check 10 recent tasks"
+              ],
+              "evidenceMicroIds": ["team-role-clarity-cadence-1"],
+              "callouts": {
+                "negativeEffects": [
+                  {
+                    "aimId": "team-role-clarity-cadence",
+                    "risk": "Ambiguous ownership causes thrash and deadline drift",
+                    "severity": "high",
+                    "cluster": "TEAM",
+                    "weight": -0.6
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["examples/aimtable.v1.*.json"],
+      "url": "./schema/aimtable.v1.schema.json"
+    },
+    {
+      "fileMatch": ["examples/hierarchy.v1.*.json"],
+      "url": "./schema/hierarchy.v1.schema.json"
+    },
+    {
+      "fileMatch": ["examples/plannerbundle.v1.*.json"],
+      "url": "./schema/plannerbundle.v1.schema.json"
+    }
+  ]
+}
