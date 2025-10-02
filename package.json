@@ -2,6 +2,13 @@
   "name": "hokusei-blueprint-data-model",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "blueprint-import": "importer/cli.js"
+  },
   "devDependencies": {
     "ajv": "^8.17.1",
     "ajv-cli": "^5.0.0",
@@ -11,6 +18,11 @@
     "schema:compile": "ajv compile -c ajv-formats -s schema/aimtable.v1.schema.json -r schema/types.common.v1.schema.json && ajv compile -c ajv-formats -s schema/hierarchy.v1.schema.json -r schema/types.common.v1.schema.json && ajv compile -c ajv-formats -s schema/plannerbundle.v1.schema.json -r schema/types.common.v1.schema.json",
     "schema:validate": "ajv validate -c ajv-formats -s schema/aimtable.v1.schema.json -r schema/types.common.v1.schema.json -d examples/aimtable.v1.pass.json && ajv validate -c ajv-formats -s schema/hierarchy.v1.schema.json -r schema/types.common.v1.schema.json -d examples/hierarchy.v1.pass.json && ajv validate -c ajv-formats -s schema/plannerbundle.v1.schema.json -r schema/types.common.v1.schema.json -d examples/plannerbundle.v1.pass.json",
     "schema:validate:fail": "ajv validate -c ajv-formats -s schema/aimtable.v1.schema.json -r schema/types.common.v1.schema.json -d examples/aimtable.v1.fail.missing-item.json || true && ajv validate -c ajv-formats -s schema/hierarchy.v1.schema.json -r schema/types.common.v1.schema.json -d examples/hierarchy.v1.fail.micros-as-strings.json || true && ajv validate -c ajv-formats -s schema/plannerbundle.v1.schema.json -r schema/types.common.v1.schema.json -d examples/plannerbundle.v1.fail.bad-callout.json || true",
-    "schema:test": "npm run schema:compile && npm run schema:validate && npm run schema:validate:fail"
+    "schema:test": "npm run schema:compile && npm run schema:validate && npm run schema:validate:fail",
+    "import:paste": "node importer/cli.js --mode paste",
+    "import:stdin": "node importer/cli.js --mode stdin",
+    "import:example:aimtable": "cat examples/aimtable.v1.pass.json | node importer/cli.js --mode stdin --type aimtable",
+    "import:example:hierarchy": "cat examples/hierarchy.v1.pass.json | node importer/cli.js --mode stdin --type hierarchy",
+    "import:example:planner": "cat examples/plannerbundle.v1.pass.json | node importer/cli.js --mode stdin --type plannerbundle"
   }
 }
