@@ -1,6 +1,6 @@
 {
   "version": "plannerbundle.v1",
-  "generatedAt": "2025-01-01T00:00:00Z",
+  "generatedAt": "2025-10-02T00:00:00Z",
   "source": {
     "aimVersion": "aimtable.v1",
     "aimRef": "examples/aimtable.v1.pass.json",
@@ -9,29 +9,27 @@
   },
   "projects": [
     {
-      "id": "proj-demo",
-      "title": "Demo",
+      "id": "proj-team-clarity",
+      "title": "TEAM",
       "paths": [
         {
           "id": "path-a",
           "archetype": "A_SPEED",
           "slices": [
             {
-              "id": "slice-a",
-              "title": "Demo slice",
+              "id": "slice-clarity-owner-date",
+              "title": "Owner + due date",
               "status": "ready",
               "effortDays": 1,
               "aimNodeIds": ["team-role-clarity-cadence"],
-              "beliefEffects": [
-                { "aimId": "team-role-clarity-cadence", "weight": 0.6 }
-              ],
+              "beliefEffects": [{ "aimId": "team-role-clarity-cadence", "weight": 0.6 }],
               "callouts": {
                 "negativeEffects": [
                   {
-                    "risk": "Intended failure: missing aimId",
-                    "severity": "medium",
+                    "risk": "Ambiguous ownership causes thrash",
+                    "severity": "high",
                     "cluster": "TEAM",
-                    "weight": -0.5
+                    "weight": -0.6
                   }
                 ]
               }

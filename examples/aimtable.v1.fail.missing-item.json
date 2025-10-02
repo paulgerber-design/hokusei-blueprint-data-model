@@ -1,13 +1,6 @@
 {
   "version": "aimtable.v1",
   "items": [
-    "team-psychological-safety-candor",
-    "team-role-clarity-cadence",
-    "team-growth-coaching",
-    "revenue-fair-transparent-rewards",
-    "revenue-unit-economics-runway",
-    "revenue-investment-portfolio",
-    "customer-trusting-partnerships",
-    "customer-outcome-proof"
+    { "id": "team-psychological-safety-candor", "cluster": "TEAM", "title": "Invite candid dissent" }
   ]
 }

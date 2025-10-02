@@ -1,46 +1,38 @@
 {
   "$id": "hierarchy.v1.schema.json",
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Hokusei AIM Hierarchy v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIM Hierarchy v1",
   "type": "object",
   "additionalProperties": false,
   "required": ["version", "pillars"],
   "properties": {
-    "version": { "enum": ["aimhierarchy.v1", "hierarchy.v1"] },
+    "version": {
+      "type": "string",
+      "enum": ["hierarchy.v1", "aimhierarchy.v1"]
+    },
     "pillars": {
       "type": "array",
       "minItems": 3,
       "maxItems": 3,
       "items": { "$ref": "#/definitions/Pillar" }
-    },
-    "microBeliefs": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/Micro" }
     }
   },
   "definitions": {
-    "Pillar": {
+    "Micro": {
       "type": "object",
-      "additionalProperties": false,
-      "required": ["subs"],
+      "additionalProperties": true,
+      "required": ["id"],
       "properties": {
         "id": { "type": "string" },
-        "title": { "type": "string" },
-        "subs": {
-          "type": "array",
-          "minItems": 3,
-          "maxItems": 3,
-          "items": { "$ref": "#/definitions/Sub" }
-        }
+        "label": { "type": "string" }
       }
     },
     "Sub": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "required": ["micros"],
       "properties": {
         "id": { "type": "string" },
-        "title": { "type": "string" },
         "micros": {
           "type": "array",
           "minItems": 3,
@@ -49,14 +41,19 @@
         }
       }
     },
-    "Micro": {
+    "Pillar": {
       "type": "object",
-      "additionalProperties": false,
-      "required": ["id"],
+      "additionalProperties": true,
+      "required": ["subs"],
       "properties": {
-        "id": { "type": "string", "minLength": 1 },
-        "label": { "type": "string" },
-        "belief": { "type": "string" }
+        "id": { "type": "string" },
+        "cluster": { "$ref": "./types.common.v1.schema.json#/definitions/Cluster" },
+        "subs": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "$ref": "#/definitions/Sub" }
+        }
       }
     }
   }

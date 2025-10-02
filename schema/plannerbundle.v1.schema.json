@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "plannerbundle.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "PlannerBundle v1",
   "type": "object",
   "additionalProperties": false,
@@ -10,13 +10,13 @@
     "generatedAt": { "type": "string", "format": "date-time" },
     "source": {
       "type": "object",
-      "additionalProperties": false,
-      "required": ["aimVersion", "aimRef", "hierarchyVersion", "hierarchyRef"],
+      "additionalProperties": true,
+      "required": ["aimVersion", "hierarchyVersion"],
       "properties": {
-        "aimVersion": { "const": "aimtable.v1" },
-        "aimRef": { "type": "string", "minLength": 1 },
-        "hierarchyVersion": { "const": "hierarchy.v1" },
-        "hierarchyRef": { "type": "string", "minLength": 1 }
+        "aimVersion": { "type": "string" },
+        "aimRef": { "type": "string" },
+        "hierarchyVersion": { "type": "string" },
+        "hierarchyRef": { "type": "string" }
       }
     },
     "projects": {
@@ -28,11 +28,11 @@
   "definitions": {
     "Project": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "required": ["id", "title", "paths"],
       "properties": {
-        "id": { "type": "string", "minLength": 1 },
-        "title": { "type": "string", "minLength": 1 },
+        "id": { "type": "string" },
+        "title": { "type": "string" },
         "rationale": { "type": "string" },
         "paths": {
           "type": "array",
@@ -43,11 +43,11 @@
     },
     "Path": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "required": ["id", "archetype", "slices"],
       "properties": {
-        "id": { "type": "string", "minLength": 1 },
-        "archetype": { "$ref": "types.common.v1.schema.json#/definitions/Archetype" },
+        "id": { "type": "string" },
+        "archetype": { "$ref": "./types.common.v1.schema.json#/definitions/Archetype" },
         "nextSliceId": { "type": "string" },
         "slices": {
           "type": "array",
@@ -58,43 +58,37 @@
     },
     "Slice": {
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "required": ["id", "title", "status", "effortDays", "aimNodeIds", "beliefEffects"],
       "properties": {
-        "id": { "type": "string", "minLength": 1 },
-        "title": { "type": "string", "minLength": 1 },
-        "status": { "type": "string", "enum": ["ready", "blocked", "in-progress", "done"] },
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "status": { "type": "string", "enum": ["ready", "blocked", "done", "wip"] },
         "effortDays": { "type": "number", "minimum": 0 },
         "aimNodeIds": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "types.common.v1.schema.json#/definitions/AimId" }
+          "items": { "type": "string" }
         },
         "beliefEffects": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "types.common.v1.schema.json#/definitions/BeliefEffect" }
+          "items": { "$ref": "./types.common.v1.schema.json#/definitions/BeliefEffect" }
         },
         "dependsOn": {
           "type": "array",
           "items": { "type": "string" }
         },
-        "dod": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
+        "dod": { "type": "array", "items": { "type": "string" } },
         "notes": { "type": "string" },
-        "evidenceMicroIds": {
-          "type": "array",
-          "items": { "$ref": "types.common.v1.schema.json#/definitions/MicroId" }
-        },
+        "evidenceMicroIds": { "type": "array", "items": { "type": "string" } },
         "callouts": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
             "negativeEffects": {
               "type": "array",
-              "items": { "$ref": "types.common.v1.schema.json#/definitions/NegativeEffect" }
+              "items": { "$ref": "./types.common.v1.schema.json#/definitions/NegativeEffect" }
             }
           }
         }

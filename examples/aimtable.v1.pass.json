@@ -1,16 +1,14 @@
 {
   "version": "aimtable.v1",
   "items": [
-    { "id": "team-psychological-safety-candor", "label": "Invite candid dissent", "cluster": "TEAM" },
-    { "id": "team-role-clarity-cadence",       "label": "Publish clear owners & cadence", "cluster": "TEAM" },
-    { "id": "team-growth-coaching",            "label": "Coach strengths monthly", "cluster": "TEAM" },
-
-    { "id": "revenue-fair-transparent-rewards","label": "Make rewards feel fair", "cluster": "REVENUE" },
-    { "id": "revenue-unit-economics-runway",   "label": "Guard healthy unit economics", "cluster": "REVENUE" },
-    { "id": "revenue-investment-portfolio",    "label": "Buffer & diversify wisely", "cluster": "REVENUE" },
-
-    { "id": "customer-trusting-partnerships",  "label": "Co‑create expectations", "cluster": "CUSTOMER" },
-    { "id": "customer-outcome-proof",          "label": "Prove outcomes early", "cluster": "CUSTOMER" },
-    { "id": "customer-celebrate-gratitude",    "label": "Celebrate wins", "cluster": "CUSTOMER" }
+    { "id": "team-psychological-safety-candor", "cluster": "TEAM", "title": "Invite candid dissent" },
+    { "id": "team-role-clarity-cadence", "cluster": "TEAM", "title": "Publish clear owners & cadence" },
+    { "id": "team-growth-coaching", "cluster": "TEAM", "title": "Coach strengths monthly" },
+    { "id": "revenue-unit-economics-runway", "cluster": "REVENUE", "title": "Guard unit economics & runway" },
+    { "id": "revenue-fair-transparent-rewards", "cluster": "REVENUE", "title": "Make rewards feel fair" },
+    { "id": "revenue-investment-portfolio", "cluster": "REVENUE", "title": "Diversify & buffer wisely" },
+    { "id": "customer-trusting-partnerships", "cluster": "CUSTOMER", "title": "Co-create expectations" },
+    { "id": "customer-outcome-proof", "cluster": "CUSTOMER", "title": "Prove outcomes early" },
+    { "id": "customer-celebrate-gratitude", "cluster": "CUSTOMER", "title": "Celebrate wins" }
   ]
 }

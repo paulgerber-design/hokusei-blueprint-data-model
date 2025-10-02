@@ -1,19 +1,27 @@
 #!/usr/bin/env node
-/* Blueprint Importer (manual paste or stdin)
- * Supports: aimtable.v1, hierarchy.v1, plannerbundle.v1
- * Writes: imports/<ISO-compact>/<type>.v1.import.json
+/**
+ * Manual importer CLI (paste | stdin) with JSON Schema validation (Ajv v8 + formats).
+ * Usage:
+ *   blueprint-import --help
+ *   blueprint-import --mode paste
+ *   cat examples/plannerbundle.v1.pass.json | blueprint-import --mode stdin --type plannerbundle
+ *
+ * Local dev (without global link):
+ *   npx . -- --help
  */
-'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const readline = require('readline');
-const Ajv = require('ajv');
-const addFormats = require('ajv-formats');
+import fs from 'fs';
+import path from 'path';
+import readline from 'readline';
+import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
+import { fileURLToPath } from 'url';
 
-function showHelp() {
-  console.log(`
-Usage:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+function printHelp() {
+  console.log(`Usage:
   Paste mode (interactive):
     npm run import:paste
     blueprint-import --mode paste
@@ -23,124 +31,141 @@ Usage:
     cat <yourfile.json> | blueprint-import --mode stdin --type hierarchy
 
 Options:
-  --mode paste|stdin       Input mode (default: paste)
-  --type aimtable|hierarchy|plannerbundle  (optional; auto-detected from "version" when omitted)
+  --mode paste|stdin
+  --type aimtable|hierarchy|plannerbundle  (optional; will auto-detect from "version" if omitted)
   --out-dir <dir>          Output root directory (default: imports)
-  --help                   Show this help
-`.trim());
+  --help                   Show this help`);
 }
 
 function parseArgs(argv) {
-  const opts = { mode: 'paste', type: null, outDir: 'imports' };
+  const args = { mode: 'paste', type: null, outDir: 'imports' };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
-    if (a === '--mode') opts.mode = argv[++i] || opts.mode;
-    else if (a === '--type') opts.type = argv[++i] || null;
-    else if (a === '--out-dir' || a === '--dest') opts.outDir = argv[++i] || opts.outDir;
-    else if (a === '--help' || a === '-h') { showHelp(); process.exit(0); }
+    if (a === '--help' || a === '-h') return { help: true };
+    if (a === '--mode') { args.mode = argv[++i]; continue; }
+    if (a === '--type') { args.type = argv[++i]; continue; }
+    if (a === '--out-dir') { args.outDir = argv[++i]; continue; }
   }
-  return opts;
+  return args;
 }
 
-async function readFromPaste() {
-  console.log('Paste JSON, then press Ctrl-D to finish (Ctrl-Z on Windows).');
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout, terminal: true });
+function loadSchemas(ajv) {
+  const types = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'schema', 'types.common.v1.schema.json'), 'utf8'));
+  const aim = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'schema', 'aimtable.v1.schema.json'), 'utf8'));
+  const hier = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'schema', 'hierarchy.v1.schema.json'), 'utf8'));
+  const plan = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'schema', 'plannerbundle.v1.schema.json'), 'utf8'));
+  ajv.addSchema(types);
+  ajv.addSchema(aim);
+  ajv.addSchema(hier);
+  ajv.addSchema(plan);
+}
+
+function detectType(json) {
+  if (!json || typeof json !== 'object') return null;
+  switch (json.version) {
+    case 'aimtable.v1': return 'aimtable';
+    case 'hierarchy.v1': return 'hierarchy';
+    case 'plannerbundle.v1': return 'plannerbundle';
+    default: return null;
+  }
+}
+
+function getSchemaRef(type) {
+  if (type === 'aimtable') return { $ref: 'aimtable.v1.schema.json' };
+  if (type === 'hierarchy') return { $ref: 'hierarchy.v1.schema.json' };
+  if (type === 'plannerbundle') return { $ref: 'plannerbundle.v1.schema.json' };
+  return null;
+}
+
+async function readPaste() {
+  console.log('Paste JSON, then press Ctrl-D to finish (Ctrl-Z on Windows).\n');
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout, terminal: false });
   let buf = '';
   for await (const line of rl) buf += line + '\n';
   return buf.trim();
 }
 
-async function readFromStdin() {
-  if (process.stdin.isTTY) {
-    console.error('✖ No stdin detected. Use --mode paste or pipe a file.');
-    process.exit(1);
-  }
-  const chunks = [];
-  for await (const c of process.stdin) chunks.push(c);
-  return Buffer.concat(chunks).toString('utf8').trim();
+async function readStdin() {
+  return new Promise((resolve, reject) => {
+    let buf = '';
+    process.stdin.setEncoding('utf8');
+    process.stdin.on('data', (chunk) => { buf += chunk; });
+    process.stdin.on('end', () => resolve(buf.trim()));
+    process.stdin.on('error', (e) => reject(e));
+  });
 }
 
-function loadSchemas() {
-  const schemaDir = path.resolve(__dirname, '../schema');
-  const load = (f) => JSON.parse(fs.readFileSync(path.join(schemaDir, f), 'utf8'));
-  const types = load('types.common.v1.schema.json');
-  const aim = load('aimtable.v1.schema.json');
-  const hier = load('hierarchy.v1.schema.json');
-  const plan = load('plannerbundle.v1.schema.json');
-
-  const ajv = new Ajv({ allErrors: true, strict: true });
-  addFormats(ajv);
-  ajv.addSchema(types, types.$id || 'types.common.v1.schema.json');
-  ajv.addSchema(aim,   aim.$id   || 'aimtable.v1.schema.json');
-  ajv.addSchema(hier,  hier.$id  || 'hierarchy.v1.schema.json');
-  ajv.addSchema(plan,  plan.$id  || 'plannerbundle.v1.schema.json');
-
-  return { ajv };
+function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true });
 }
 
-function detectType(obj) {
-  const v = obj && typeof obj.version === 'string' ? obj.version : '';
-  if (v.startsWith('aimtable.')) return 'aimtable';
-  if (v.startsWith('hierarchy.')) return 'hierarchy';
-  if (v.startsWith('plannerbundle.')) return 'plannerbundle';
-  return null;
+function timestamp() {
+  return new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
 }
 
-function schemaIdFor(type) {
-  return {
-    aimtable: 'aimtable.v1.schema.json',
-    hierarchy: 'hierarchy.v1.schema.json',
-    plannerbundle: 'plannerbundle.v1.schema.json'
-  }[type] || null;
-}
+async function main() {
+  const args = parseArgs(process.argv);
+  if (args.help) { printHelp(); process.exit(0); }
 
-function isoCompact() {
-  // 2025-09-30T12:34:56.789Z -> 20250930-123456Z (remove punctuation, keep Z)
-  const s = new Date().toISOString();
-  return s.replace(/[-:]/g, '').replace(/\.\d{3}/, '').replace('T', '-');
-}
-
-(async function main() {
-  const opts = parseArgs(process.argv);
-  const input = await (opts.mode === 'stdin' ? readFromStdin() : readFromPaste());
-
-  let data;
-  try {
-    data = JSON.parse(input);
-  } catch (e) {
-    console.error('✖ Invalid JSON:', e.message);
-    process.exit(1);
-  }
-
-  let type = opts.type || detectType(data);
-  if (!type) {
-    console.error('✖ Could not detect type from "version". Pass --type aimtable|hierarchy|plannerbundle.');
-    process.exit(1);
-  }
-
-  const { ajv } = loadSchemas();
-  const sid = schemaIdFor(type);
-  const validate = ajv.getSchema(sid);
-  if (!validate) {
-    console.error(`✖ Internal error: schema not loaded for ${type} (${sid})`);
-    process.exit(1);
-  }
-
-  const valid = validate(data);
-  if (!valid) {
-    console.error(`✖ Validation failed (${validate.errors.length} error${validate.errors.length !== 1 ? 's' : ''}):`);
-    for (const err of validate.errors) {
-      console.error(`  - ${err.instancePath || '/'} ${err.message}${err.params ? ' ' + JSON.stringify(err.params) : ''}`);
-    }
+  if (!['paste', 'stdin'].includes(args.mode)) {
+    console.error('✖ Invalid --mode (use paste|stdin)');
     process.exit(2);
   }
 
-  const outRoot = path.resolve(process.cwd(), opts.outDir, isoCompact());
-  fs.mkdirSync(outRoot, { recursive: true });
-  const outFile = path.join(outRoot, `${type}.v1.import.json`);
-  fs.writeFileSync(outFile, JSON.stringify(data, null, 2), 'utf8');
+  const ajv = new Ajv({ allErrors: true, strict: false });
+  addFormats(ajv);
+  loadSchemas(ajv);
+
+  let raw;
+  try {
+    raw = args.mode === 'paste' ? await readPaste() : await readStdin();
+  } catch (e) {
+    console.error(`✖ Read error: ${String(e)}`);
+    process.exit(2);
+  }
+
+  let json;
+  try {
+    json = JSON.parse(raw);
+  } catch (e) {
+    console.error(`✖ Invalid JSON: ${e.message}`);
+    process.exit(1);
+  }
+
+  const type = args.type || detectType(json);
+  if (!type) {
+    console.error('✖ Could not determine type. Pass --type aimtable|hierarchy|plannerbundle or include a valid "version".');
+    process.exit(2);
+  }
+
+  const schemaRef = getSchemaRef(type);
+  if (!schemaRef) {
+    console.error('✖ Unknown --type value.');
+    process.exit(2);
+  }
+
+  const validate = ajv.compile(schemaRef);
+  const valid = validate(json);
+
+  if (!valid) {
+    console.error(`✖ Validation failed (${validate.errors.length} ${validate.errors.length === 1 ? 'error' : 'errors'}):`);
+    for (const err of validate.errors) {
+      console.error(`  - ${err.instancePath || '/'} ${err.message} ${JSON.stringify(err.params)}`);
+    }
+    process.exit(1);
+  }
 
   console.log(`✔ Valid ${type} JSON`);
+
+  const outRoot = path.resolve(process.cwd(), args.outDir);
+  const outDir = path.join(outRoot, timestamp());
+  ensureDir(outDir);
+  const outFile = path.join(outDir, `${type}.v1.import.json`);
+  fs.writeFileSync(outFile, JSON.stringify(json, null, 2));
   console.log(`→ Saved to ${path.relative(process.cwd(), outFile)}`);
-  process.exit(0);
-})();
+}
+
+main().catch((e) => {
+  console.error(`✖ Unexpected error: ${String(e)}`);
+  process.exit(2);
+});

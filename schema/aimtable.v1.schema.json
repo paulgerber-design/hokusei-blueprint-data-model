@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "aimtable.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "AimTable v1",
   "type": "object",
   "additionalProperties": false,
@@ -11,19 +11,15 @@
       "type": "array",
       "minItems": 9,
       "maxItems": 9,
-      "items": { "$ref": "#/definitions/AimNode" }
-    }
-  },
-  "definitions": {
-    "AimNode": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "label", "cluster"],
-      "properties": {
-        "id":  { "$ref": "types.common.v1.schema.json#/definitions/AimId" },
-        "label": { "type": "string", "minLength": 1 },
-        "cluster": { "$ref": "types.common.v1.schema.json#/definitions/Cluster" },
-        "description": { "type": "string" }
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["id"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "cluster": { "$ref": "./types.common.v1.schema.json#/definitions/Cluster" }
+        }
       }
     }
   }

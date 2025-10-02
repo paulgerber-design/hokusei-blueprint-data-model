@@ -6,96 +6,96 @@
       "title": "Operate as a calm, fast crew",
       "subs": [
         {
-          "id": "team-psychological-safety-candor",
-          "title": "Invite candid dissent",
+          "id": "sub-team-psych",
+          "title": "Psychological Safety & Candor",
           "micros": [
-            { "id": "team-psych-safety-candor-1", "label": "Normalize dissent publicly" },
-            { "id": "team-psych-safety-candor-2", "label": "Add 5‑minute check‑ins" },
-            { "id": "team-psych-safety-candor-3", "label": "Publish a red‑team rotation" }
+            { "id": "team-psychological-safety-candor-1", "label": "Check-in round at start" },
+            { "id": "team-psychological-safety-candor-2", "label": "Feedback-as-a-gift line" },
+            { "id": "team-psychological-safety-candor-3", "label": "Red-team rotation" }
           ]
         },
         {
-          "id": "team-role-clarity-cadence",
-          "title": "Publish clear owners and cadence",
+          "id": "sub-team-clarity",
+          "title": "Role Clarity & Cadence",
           "micros": [
-            { "id": "team-role-clarity-cadence-1", "label": "Owner + due date on every task" },
-            { "id": "team-role-clarity-cadence-2", "label": "Post Monday priorities by 10:00" },
-            { "id": "team-role-clarity-cadence-3", "label": "Close loops with a one‑line status" }
+            { "id": "team-role-clarity-cadence-1", "label": "Owner+due-date required" },
+            { "id": "team-role-clarity-cadence-2", "label": "Monday priorities post" },
+            { "id": "team-role-clarity-cadence-3", "label": "Close loops with status" }
           ]
         },
         {
-          "id": "team-growth-coaching",
-          "title": "Coach strengths monthly",
+          "id": "sub-team-growth",
+          "title": "Growth & Coaching",
           "micros": [
-            { "id": "team-growth-coaching-1", "label": "Schedule monthly 1:1s (45m)" },
-            { "id": "team-growth-coaching-2", "label": "Use 1:1 template (2 strengths + 1 experiment)" },
-            { "id": "team-growth-coaching-3", "label": "Quarterly progress review + micro‑wins" }
+            { "id": "team-growth-coaching-1", "label": "Monthly 1:1s scheduled" },
+            { "id": "team-growth-coaching-2", "label": "1:1 template (2 strengths + 1 experiment)" },
+            { "id": "team-growth-coaching-3", "label": "Quarterly progress review" }
           ]
         }
       ]
     },
     {
       "id": "pillar-revenue",
-      "title": "Make value compounding and cash predictable",
+      "title": "Predictable cash & value compounding",
       "subs": [
         {
-          "id": "revenue-fair-transparent-rewards",
-          "title": "Fair & transparent rewards",
+          "id": "sub-revenue-unit-econ",
+          "title": "Unit Economics & Runway",
           "micros": [
-            { "id": "revenue-rewards-1", "label": "Publish pay bands and levels" },
-            { "id": "revenue-rewards-2", "label": "Twice‑yearly comp fairness audit" },
-            { "id": "revenue-rewards-3", "label": "Publish promotion criteria" }
+            { "id": "revenue-unit-economics-runway-1", "label": "Unit econ dashboard" },
+            { "id": "revenue-unit-economics-runway-2", "label": "Monthly finance review" },
+            { "id": "revenue-unit-economics-runway-3", "label": "Burn breach pause rule" }
           ]
         },
         {
-          "id": "revenue-unit-economics-runway",
-          "title": "Healthy unit economics & runway",
+          "id": "sub-rewards",
+          "title": "Fair & Transparent Rewards",
           "micros": [
-            { "id": "revenue-unit-econ-1", "label": "Unit economics dashboard (CAC/LTV/margin/burn)" },
-            { "id": "revenue-unit-econ-2", "label": "First‑weekday 30‑minute finance review" },
-            { "id": "revenue-unit-econ-3", "label": "Pause rule for burn breach (2 weeks)" }
+            { "id": "revenue-fair-transparent-rewards-1", "label": "Bands & levels doc" },
+            { "id": "revenue-fair-transparent-rewards-2", "label": "Twice-yearly fairness audit" },
+            { "id": "revenue-fair-transparent-rewards-3", "label": "Promotion criteria published" }
           ]
         },
         {
-          "id": "revenue-investment-portfolio",
-          "title": "Diversified, buffered portfolio",
+          "id": "sub-portfolio",
+          "title": "Investment Portfolio",
           "micros": [
-            { "id": "revenue-portfolio-1", "label": "≥6 months runway in reserve accounts" },
-            { "id": "revenue-portfolio-2", "label": "Split one critical vendor across two providers" },
-            { "id": "revenue-portfolio-3", "label": "Quarterly vendor risk/cost review" }
+            { "id": "revenue-investment-portfolio-1", "label": "≥6 months reserve verified" },
+            { "id": "revenue-investment-portfolio-2", "label": "Diversify a critical vendor" },
+            { "id": "revenue-investment-portfolio-3", "label": "Quarterly vendor risk review" }
           ]
         }
       ]
     },
     {
       "id": "pillar-customer",
-      "title": "Learn fast; deliver outcomes people can feel",
+      "title": "Learn fast with trusted outcomes",
       "subs": [
         {
-          "id": "customer-trusting-partnerships",
-          "title": "Co‑create expectations",
+          "id": "sub-customer-partnerships",
+          "title": "Trusting Partnerships",
           "micros": [
-            { "id": "customer-partnerships-1", "label": "Add success‑criteria to project brief" },
-            { "id": "customer-partnerships-2", "label": "Record deciders + weekly cadence" },
-            { "id": "customer-partnerships-3", "label": "Offer opt‑in privacy choices for research" }
+            { "id": "customer-trusting-partnerships-1", "label": "Success-criteria in brief" },
+            { "id": "customer-trusting-partnerships-2", "label": "Deciders + weekly cadence" },
+            { "id": "customer-trusting-partnerships-3", "label": "Privacy choices for research" }
           ]
         },
         {
-          "id": "customer-outcome-proof",
-          "title": "Prove outcomes early",
+          "id": "sub-customer-outcomes",
+          "title": "Outcome Proof",
           "micros": [
-            { "id": "customer-outcomes-1", "label": "Put next demo on calendar; 2‑week cadence" },
-            { "id": "customer-outcomes-2", "label": "Add CEI to weekly share" },
-            { "id": "customer-outcomes-3", "label": "Ask for one concrete steer at demo close" }
+            { "id": "customer-outcome-proof-1", "label": "Demo cadence set" },
+            { "id": "customer-outcome-proof-2", "label": "CEI metric shared" },
+            { "id": "customer-outcome-proof-3", "label": "Ask one concrete steer" }
           ]
         },
         {
-          "id": "customer-celebrate-gratitude",
-          "title": "Celebrate wins",
+          "id": "sub-customer-celebrate",
+          "title": "Celebrate & Gratitude",
           "micros": [
-            { "id": "customer-celebrate-1", "label": "48‑hour customer thank‑you template" },
-            { "id": "customer-celebrate-2", "label": "Customer Wins section in monthly update" },
-            { "id": "customer-celebrate-3", "label": "Invite a customer story to town hall" }
+            { "id": "customer-celebrate-gratitude-1", "label": "48-hour thank-you template" },
+            { "id": "customer-celebrate-gratitude-2", "label": "Monthly 'Customer Wins' section" },
+            { "id": "customer-celebrate-gratitude-3", "label": "Invite stories at town hall" }
           ]
         }
       ]
