@@ -1,15 +1,30 @@
 {
+  "json.schemaDownload.enable": false,
+  "json.validate.enable": true,
+
   "json.schemas": [
     {
-      "fileMatch": ["examples/aimtable.v1.*.json"],
+      "fileMatch": [
+        "examples/aimtable.v1.pass.json",
+        "examples/aimtable.v1.fail.*.json",
+        "imports/**/aimtable.v1.import.json"
+      ],
       "url": "./schema/aimtable.v1.schema.json"
     },
     {
-      "fileMatch": ["examples/hierarchy.v1.*.json"],
+      "fileMatch": [
+        "examples/hierarchy.v1.pass.json",
+        "examples/hierarchy.v1.fail.*.json",
+        "imports/**/hierarchy.v1.import.json"
+      ],
       "url": "./schema/hierarchy.v1.schema.json"
     },
     {
-      "fileMatch": ["examples/plannerbundle.v1.*.json"],
+      "fileMatch": [
+        "examples/plannerbundle.v1.pass.json",
+        "examples/plannerbundle.v1.fail.*.json",
+        "imports/**/plannerbundle.v1.import.json"
+      ],
       "url": "./schema/plannerbundle.v1.schema.json"
     }
   ]

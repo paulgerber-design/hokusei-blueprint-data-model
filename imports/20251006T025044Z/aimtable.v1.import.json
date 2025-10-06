@@ -1,0 +1,50 @@
+{
+  "version": "aimtable.v1",
+  "items": [
+    {
+      "id": "team-psychological-safety-candor",
+      "cluster": "TEAM",
+      "title": "Invite candid dissent"
+    },
+    {
+      "id": "team-role-clarity-cadence",
+      "cluster": "TEAM",
+      "title": "Publish clear owners & cadence"
+    },
+    {
+      "id": "team-growth-coaching",
+      "cluster": "TEAM",
+      "title": "Coach strengths monthly"
+    },
+    {
+      "id": "revenue-unit-economics-runway",
+      "cluster": "REVENUE",
+      "title": "Guard unit economics & runway"
+    },
+    {
+      "id": "revenue-fair-transparent-rewards",
+      "cluster": "REVENUE",
+      "title": "Make rewards feel fair"
+    },
+    {
+      "id": "revenue-investment-portfolio",
+      "cluster": "REVENUE",
+      "title": "Diversify & buffer wisely"
+    },
+    {
+      "id": "customer-trusting-partnerships",
+      "cluster": "CUSTOMER",
+      "title": "Co-create expectations"
+    },
+    {
+      "id": "customer-outcome-proof",
+      "cluster": "CUSTOMER",
+      "title": "Prove outcomes early"
+    },
+    {
+      "id": "customer-celebrate-gratitude",
+      "cluster": "CUSTOMER",
+      "title": "Celebrate wins"
+    }
+  ]
+}

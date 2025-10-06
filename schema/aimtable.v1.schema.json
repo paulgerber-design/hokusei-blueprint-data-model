@@ -1,26 +1,24 @@
 {
-  "$id": "aimtable.v1.schema.json",
+  "$id": "https://hokusei.dev/schema/aimtable.v1.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "AimTable v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "items"],
   "properties": {
     "version": { "const": "aimtable.v1" },
     "items": {
       "type": "array",
       "minItems": 9,
-      "maxItems": 9,
       "items": {
         "type": "object",
         "additionalProperties": true,
-        "required": ["id"],
         "properties": {
-          "id": { "type": "string" },
-          "title": { "type": "string" },
-          "cluster": { "$ref": "./types.common.v1.schema.json#/definitions/Cluster" }
-        }
+          "id": { "type": "string", "minLength": 1 },
+          "label": { "type": "string" }
+        },
+        "required": ["id"]
       }
     }
-  }
+  },
+  "required": ["version", "items"]
 }

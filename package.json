@@ -1,6 +1,6 @@
 {
   "name": "hokusei-blueprint-data-model",
-  "version": "1.0.0",
+  "version": "0.3.3",
   "private": true,
   "devDependencies": {
     "ajv": "^8.17.1",
@@ -8,9 +8,17 @@
     "ajv-formats": "^2.1.1"
   },
   "scripts": {
-    "schema:compile": "ajv compile -c ajv-formats --spec=draft2020 -s schema/types.common.v1.schema.json && ajv compile -c ajv-formats --spec=draft2020 -s schema/aimtable.v1.schema.json -r schema/types.common.v1.schema.json && ajv compile -c ajv-formats --spec=draft2020 -s schema/hierarchy.v1.schema.json -r schema/types.common.v1.schema.json && ajv compile -c ajv-formats --spec=draft2020 -s schema/plannerbundle.v1.schema.json -r schema/types.common.v1.schema.json",
+    "schema:compile": "ajv compile -c ajv-formats --spec=draft2020 -s schema/aimtable.v1.schema.json -r schema/types.common.v1.schema.json && ajv compile -c ajv-formats --spec=draft2020 -s schema/hierarchy.v1.schema.json -r schema/types.common.v1.schema.json && ajv compile -c ajv-formats --spec=draft2020 -s schema/plannerbundle.v1.schema.json -r schema/types.common.v1.schema.json",
     "schema:validate": "ajv validate -c ajv-formats --spec=draft2020 -s schema/aimtable.v1.schema.json -r schema/types.common.v1.schema.json -d examples/aimtable.v1.pass.json && ajv validate -c ajv-formats --spec=draft2020 -s schema/hierarchy.v1.schema.json -r schema/types.common.v1.schema.json -d examples/hierarchy.v1.pass.json && ajv validate -c ajv-formats --spec=draft2020 -s schema/plannerbundle.v1.schema.json -r schema/types.common.v1.schema.json -d examples/plannerbundle.v1.pass.json",
     "schema:validate:fail": "ajv validate -c ajv-formats --spec=draft2020 -s schema/aimtable.v1.schema.json -r schema/types.common.v1.schema.json -d examples/aimtable.v1.fail.missing-item.json || true && ajv validate -c ajv-formats --spec=draft2020 -s schema/hierarchy.v1.schema.json -r schema/types.common.v1.schema.json -d examples/hierarchy.v1.fail.micros-as-strings.json || true && ajv validate -c ajv-formats --spec=draft2020 -s schema/plannerbundle.v1.schema.json -r schema/types.common.v1.schema.json -d examples/plannerbundle.v1.fail.bad-callout.json || true",
-    "schema:test": "npm run schema:compile && npm run schema:validate && npm run schema:validate:fail"
+    "schema:test": "npm run schema:compile && npm run schema:validate && npm run schema:validate:fail",
+    "imports:clean": "rm -rf imports && mkdir -p imports",
+    "import:example:aimtable": "cat examples/aimtable.v1.pass.json | node importer/cli.js --mode stdin --type aimtable",
+    "import:example:hierarchy": "cat examples/hierarchy.v1.pass.json | node importer/cli.js --mode stdin --type hierarchy",
+    "import:example:planner": "cat examples/plannerbundle.v1.pass.json | node importer/cli.js --mode stdin --type plannerbundle",
+    "import:stdin": "node importer/cli.js --mode stdin",
+    "import:paste": "node importer/cli.js --mode paste",
+    "merge:dry": "node merger/cli.js --dry-run",
+    "merge": "node merger/cli.js"
   }
 }

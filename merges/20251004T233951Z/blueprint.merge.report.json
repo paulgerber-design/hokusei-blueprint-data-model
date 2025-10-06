@@ -1,0 +1,17 @@
+{
+  "version": "blueprint.merge.report.v1",
+  "mergedAt": "2025-10-04T23:39:51.783Z",
+  "counts": {
+    "importsTotal": 11,
+    "plannersTotal": 4,
+    "plannersValid": 4,
+    "aimIds": 9,
+    "microIds": 27,
+    "refIssues": 0
+  },
+  "errors": [
+    "Hierarchy invalid: /pillars/0 must NOT have additional properties; /pillars/0/subs/0 must NOT have additional properties; /pillars/0/subs/1 must NOT have additional properties; /pillars/0/subs/2 must NOT have additional properties; /pillars/1 must NOT have additional properties; /pillars/1/subs/0 must NOT have additional properties; /pillars/1/subs/1 must NOT have additional properties; /pillars/1/subs/2 must NOT have additional properties; /pillars/2 must NOT have additional properties; /pillars/2/subs/0 must NOT have additional properties; /pillars/2/subs/1 must NOT have additional properties; /pillars/2/subs/2 must NOT have additional properties"
+  ],
+  "invalidPlanners": [],
+  "refIssues": []
+}

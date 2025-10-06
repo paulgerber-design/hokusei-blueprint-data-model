@@ -2,6 +2,10 @@ name: Validate Schemas & Examples
 
 on:
   push:
+    paths:
+      - "schema/**.json"
+      - "examples/**.json"
+      - "package.json"
   pull_request:
 
 jobs:
@@ -11,6 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "20"
       - run: npm ci
-      - run: npm run schema:test
+      - run: npm run schema:compile
+      - run: npm run schema:validate

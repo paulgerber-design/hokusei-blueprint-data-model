@@ -1,98 +1,78 @@
 {
-  "$id": "plannerbundle.v1.schema.json",
+  "$id": "https://hokusei.dev/schema/plannerbundle.v1.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "PlannerBundle v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "generatedAt", "source", "projects"],
   "properties": {
     "version": { "const": "plannerbundle.v1" },
     "generatedAt": { "type": "string", "format": "date-time" },
     "source": {
       "type": "object",
-      "additionalProperties": true,
-      "required": ["aimVersion", "hierarchyVersion"],
-      "properties": {
-        "aimVersion": { "type": "string" },
-        "aimRef": { "type": "string" },
-        "hierarchyVersion": { "type": "string" },
-        "hierarchyRef": { "type": "string" }
-      }
+      "additionalProperties": true
     },
     "projects": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/definitions/Project" }
-    }
-  },
-  "definitions": {
-    "Project": {
-      "type": "object",
-      "additionalProperties": true,
-      "required": ["id", "title", "paths"],
-      "properties": {
-        "id": { "type": "string" },
-        "title": { "type": "string" },
-        "rationale": { "type": "string" },
-        "paths": {
-          "type": "array",
-          "minItems": 1,
-          "items": { "$ref": "#/definitions/Path" }
-        }
-      }
-    },
-    "Path": {
-      "type": "object",
-      "additionalProperties": true,
-      "required": ["id", "archetype", "slices"],
-      "properties": {
-        "id": { "type": "string" },
-        "archetype": { "$ref": "./types.common.v1.schema.json#/definitions/Archetype" },
-        "nextSliceId": { "type": "string" },
-        "slices": {
-          "type": "array",
-          "minItems": 1,
-          "items": { "$ref": "#/definitions/Slice" }
-        }
-      }
-    },
-    "Slice": {
-      "type": "object",
-      "additionalProperties": true,
-      "required": ["id", "title", "status", "effortDays", "aimNodeIds", "beliefEffects"],
-      "properties": {
-        "id": { "type": "string" },
-        "title": { "type": "string" },
-        "status": { "type": "string", "enum": ["ready", "blocked", "done", "wip"] },
-        "effortDays": { "type": "number", "minimum": 0 },
-        "aimNodeIds": {
-          "type": "array",
-          "minItems": 1,
-          "items": { "type": "string" }
-        },
-        "beliefEffects": {
-          "type": "array",
-          "minItems": 1,
-          "items": { "$ref": "./types.common.v1.schema.json#/definitions/BeliefEffect" }
-        },
-        "dependsOn": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
-        "dod": { "type": "array", "items": { "type": "string" } },
-        "notes": { "type": "string" },
-        "evidenceMicroIds": { "type": "array", "items": { "type": "string" } },
-        "callouts": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "negativeEffects": {
-              "type": "array",
-              "items": { "$ref": "./types.common.v1.schema.json#/definitions/NegativeEffect" }
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "rationale": { "type": "string" },
+          "paths": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "archetype": { "$ref": "https://hokusei.dev/schema/types.common.v1.schema.json#/definitions/Archetype" },
+                "nextSliceId": { "type": "string" },
+                "slices": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": { "type": "string", "minLength": 1 },
+                      "title": { "type": "string", "minLength": 1 },
+                      "status": { "type": "string", "enum": ["ready", "doing", "blocked", "done"] },
+                      "effortDays": { "type": "number", "minimum": 0 },
+                      "aimNodeIds": { "type": "array", "items": { "type": "string" } },
+                      "beliefEffects": {
+                        "type": "array",
+                        "items": { "$ref": "https://hokusei.dev/schema/types.common.v1.schema.json#/definitions/BeliefEffect" }
+                      },
+                      "dependsOn": { "type": "array", "items": { "type": "string" } },
+                      "dod": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+                      "notes": { "type": "string" },
+                      "evidenceMicroIds": { "type": "array", "items": { "type": "string" } },
+                      "callouts": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "negativeEffects": {
+                            "type": "array",
+                            "items": { "$ref": "https://hokusei.dev/schema/types.common.v1.schema.json#/definitions/NegativeEffect" }
+                          }
+                        }
+                      }
+                    },
+                    "required": ["id", "title", "status", "effortDays", "aimNodeIds", "beliefEffects", "dependsOn", "dod"]
+                  }
+                }
+              },
+              "required": ["id", "archetype", "slices"]
             }
           }
-        }
+        },
+        "required": ["id", "title", "paths"]
       }
     }
-  }
+  },
+  "required": ["version", "generatedAt", "projects"]
 }

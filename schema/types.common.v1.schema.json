@@ -1,44 +1,38 @@
 {
-  "$id": "types.common.v1.schema.json",
+  "$id": "https://hokusei.dev/schema/types.common.v1.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Hokusei Common Types v1",
-  "description": "Shared types used by aimtable.v1, hierarchy.v1, plannerbundle.v1.",
   "type": "object",
   "properties": {},
   "additionalProperties": false,
   "definitions": {
-    "Cluster": {
-      "type": "string",
-      "enum": ["TEAM", "REVENUE", "CUSTOMER"]
-    },
-    "Archetype": {
-      "type": "string",
-      "enum": ["A_SPEED", "B_UX", "C_ROI"]
-    },
-    "Severity": {
-      "type": "string",
-      "enum": ["low", "medium", "high"]
-    },
+    "Id": { "type": "string", "minLength": 1 },
+    "NonEmptyString": { "type": "string", "minLength": 1 },
+    "Cluster": { "type": "string", "enum": ["TEAM", "REVENUE", "CUSTOMER"] },
+    "Archetype": { "type": "string", "enum": ["A_SPEED", "B_UX", "C_ROI"] },
+    "Severity": { "type": "string", "enum": ["low", "medium", "high"] },
+
     "BeliefEffect": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["aimId", "weight"],
       "properties": {
-        "aimId": { "type": "string" },
+        "aimId": { "$ref": "#/definitions/Id" },
         "weight": { "type": "number", "minimum": -1, "maximum": 1 }
-      }
+      },
+      "required": ["aimId", "weight"]
     },
+
     "NegativeEffect": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["aimId", "risk", "severity", "cluster", "weight"],
       "properties": {
-        "aimId": { "type": "string" },
-        "risk": { "type": "string" },
+        "aimId": { "$ref": "#/definitions/Id" },
+        "risk": { "$ref": "#/definitions/NonEmptyString" },
         "severity": { "$ref": "#/definitions/Severity" },
         "cluster": { "$ref": "#/definitions/Cluster" },
         "weight": { "type": "number", "minimum": -1, "maximum": 0 }
-      }
+      },
+      "required": ["aimId", "risk", "severity", "cluster", "weight"]
     }
   }
 }

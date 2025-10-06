@@ -1,0 +1,15 @@
+{
+  "version": "blueprint.merge.report.v1",
+  "mergedAt": "2025-10-06T02:50:51.452Z",
+  "counts": {
+    "importsTotal": 3,
+    "plannersTotal": 1,
+    "plannersValid": 1,
+    "aimIds": 9,
+    "microIds": 27,
+    "refIssues": 0
+  },
+  "errors": [],
+  "invalidPlanners": [],
+  "refIssues": []
+}
