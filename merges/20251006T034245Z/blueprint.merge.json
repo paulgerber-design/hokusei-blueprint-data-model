@@ -1,0 +1,812 @@
+{
+  "version": "blueprint.merge.v1",
+  "mergedAt": "2025-10-06T03:42:45.492Z",
+  "sources": [
+    "imports/20251006T025937Z/aimtable.v1.import.json",
+    "imports/20251006T030013Z/hierarchy.v1.import.json",
+    "imports/20251006T030115Z/plannerbundle.v1.import.json"
+  ],
+  "aims": [
+    {
+      "id": "team-psychological-safety-candor",
+      "cluster": "TEAM",
+      "title": "Invite candid dissent"
+    },
+    {
+      "id": "team-role-clarity-cadence",
+      "cluster": "TEAM",
+      "title": "Publish clear owners & cadence"
+    },
+    {
+      "id": "team-growth-coaching",
+      "cluster": "TEAM",
+      "title": "Coach strengths monthly"
+    },
+    {
+      "id": "revenue-unit-economics-runway",
+      "cluster": "REVENUE",
+      "title": "Guard unit economics & runway"
+    },
+    {
+      "id": "revenue-fair-transparent-rewards",
+      "cluster": "REVENUE",
+      "title": "Make rewards feel fair"
+    },
+    {
+      "id": "revenue-investment-portfolio",
+      "cluster": "REVENUE",
+      "title": "Diversify & buffer wisely"
+    },
+    {
+      "id": "customer-trusting-partnerships",
+      "cluster": "CUSTOMER",
+      "title": "Co-create expectations"
+    },
+    {
+      "id": "customer-outcome-proof",
+      "cluster": "CUSTOMER",
+      "title": "Prove outcomes early"
+    },
+    {
+      "id": "customer-celebrate-gratitude",
+      "cluster": "CUSTOMER",
+      "title": "Celebrate wins"
+    }
+  ],
+  "hierarchy": {
+    "version": "hierarchy.v1",
+    "pillars": [
+      {
+        "label": "Operate as a calm, fast crew (TEAM)",
+        "subs": [
+          {
+            "label": "Psychological safety & candor",
+            "aimId": "team-psychological-safety-candor",
+            "micros": [
+              {
+                "id": "team-psych-safety-candor-1",
+                "label": "Start 5‑min check‑ins",
+                "belief": "Short openers increase voice and surface risks early."
+              },
+              {
+                "id": "team-psych-safety-candor-2",
+                "label": "Feedback is a gift",
+                "belief": "Reframing reduces anxiety and encourages useful candor."
+              },
+              {
+                "id": "team-psych-safety-candor-3",
+                "label": "Red‑team rotation",
+                "belief": "Safe dissent improves decision quality and speed."
+              }
+            ]
+          },
+          {
+            "label": "Role clarity & cadence",
+            "aimId": "team-role-clarity-cadence",
+            "micros": [
+              {
+                "id": "team-role-clarity-cadence-1",
+                "label": "Owner + due date required",
+                "belief": "Explicit owners/dates reduce bounce and drift."
+              },
+              {
+                "id": "team-role-clarity-cadence-2",
+                "label": "Monday priorities by 10:00",
+                "belief": "Weekly focus reduces context switching."
+              },
+              {
+                "id": "team-role-clarity-cadence-3",
+                "label": "Close loops with one‑line status",
+                "belief": "Short final notes keep shared context intact."
+              }
+            ]
+          },
+          {
+            "label": "Growth coaching",
+            "aimId": "team-growth-coaching",
+            "micros": [
+              {
+                "id": "team-growth-coaching-1",
+                "label": "Monthly 1:1s (45 min)",
+                "belief": "Regular cadence makes coaching fair and effective."
+              },
+              {
+                "id": "team-growth-coaching-2",
+                "label": "1:1 template: 2 strengths + 1 experiment",
+                "belief": "Capturing strengths/experiments compounds growth."
+              },
+              {
+                "id": "team-growth-coaching-3",
+                "label": "Quarterly progress review",
+                "belief": "Periodic reflection sustains momentum and visibility."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Make value compounding and cash predictable (REVENUE)",
+        "subs": [
+          {
+            "label": "Unit economics & runway",
+            "aimId": "revenue-unit-economics-runway",
+            "micros": [
+              {
+                "id": "revenue-unit-econ-1",
+                "label": "Unit econ dashboard",
+                "belief": "Centralizing CAC/LTV/margin/burn stabilizes decisions."
+              },
+              {
+                "id": "revenue-unit-econ-2",
+                "label": "First‑weekday finance review",
+                "belief": "Fixed ritual improves speed and quality of decisions."
+              },
+              {
+                "id": "revenue-unit-econ-3",
+                "label": "Burn‑breach pause rule",
+                "belief": "Guardrails prevent runaway spend."
+              }
+            ]
+          },
+          {
+            "label": "Fair & transparent rewards",
+            "aimId": "revenue-fair-transparent-rewards",
+            "micros": [
+              {
+                "id": "revenue-rewards-1",
+                "label": "Publish pay bands & levels",
+                "belief": "Transparency reduces negotiation stress and inequity."
+              },
+              {
+                "id": "revenue-rewards-2",
+                "label": "Biannual comp fairness audit",
+                "belief": "Checks align compensation to impact and market."
+              },
+              {
+                "id": "revenue-rewards-3",
+                "label": "Publish promotion criteria",
+                "belief": "Clear advancement reduces churn and ambiguity."
+              }
+            ]
+          },
+          {
+            "label": "Investment portfolio & buffer",
+            "aimId": "revenue-investment-portfolio",
+            "micros": [
+              {
+                "id": "revenue-portfolio-1",
+                "label": "≥6 months runway in reserve",
+                "belief": "Liquidity buffer reduces shocks and interruptions."
+              },
+              {
+                "id": "revenue-portfolio-2",
+                "label": "Diversify one critical vendor",
+                "belief": "Lower concentration reduces downtime risk."
+              },
+              {
+                "id": "revenue-portfolio-3",
+                "label": "Quarterly vendor risk/cost review",
+                "belief": "Routine review keeps cost and risk in check."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Learn fast and deliver outcomes people can feel (CUSTOMER)",
+        "subs": [
+          {
+            "label": "Trusting partnerships",
+            "aimId": "customer-trusting-partnerships",
+            "micros": [
+              {
+                "id": "customer-partnerships-1",
+                "label": "Success‑criteria field in briefs",
+                "belief": "Co‑drafting expectations reduces misalignment."
+              },
+              {
+                "id": "customer-partnerships-2",
+                "label": "Capture deciders + weekly cadence",
+                "belief": "Clear steering cadence prevents delays."
+              },
+              {
+                "id": "customer-partnerships-3",
+                "label": "Privacy choices in research",
+                "belief": "Respectful options build durable trust."
+              }
+            ]
+          },
+          {
+            "label": "Outcome proof",
+            "aimId": "customer-outcome-proof",
+            "micros": [
+              {
+                "id": "customer-outcomes-1",
+                "label": "Next demo + 2‑week cadence",
+                "belief": "Frequent demos enable early steering."
+              },
+              {
+                "id": "customer-outcomes-2",
+                "label": "Add CEI to weekly update",
+                "belief": "Simple outcome signal guides iteration."
+              },
+              {
+                "id": "customer-outcomes-3",
+                "label": "Ask for one concrete steer",
+                "belief": "Concrete steers keep iteration crisp."
+              }
+            ]
+          },
+          {
+            "label": "Celebrate & gratitude",
+            "aimId": "customer-celebrate-gratitude",
+            "micros": [
+              {
+                "id": "customer-celebrate-1",
+                "label": "48‑hour thank‑you template",
+                "belief": "Quick gratitude deepens relationships."
+              },
+              {
+                "id": "customer-celebrate-2",
+                "label": "Customer wins in monthly update",
+                "belief": "Spotlighting makes momentum visible."
+              },
+              {
+                "id": "customer-celebrate-3",
+                "label": "Invite customer stories quarterly",
+                "belief": "Stories reinforce outcomes and partnership."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "planners": [
+    {
+      "source": {
+        "aimVersion": "aimtable.v1",
+        "aimRef": "/mnt/data/aimtable.v1.pass.json",
+        "hierarchyVersion": "hierarchy.v1",
+        "hierarchyRef": "/mnt/data/hierarchy.v1.pass.json"
+      },
+      "version": "plannerbundle.v1",
+      "generatedAt": "2025-10-02T00:00:00Z",
+      "projects": [
+        {
+          "id": "proj-team-clarity",
+          "title": "Operate as a calm, fast crew (TEAM)",
+          "rationale": "Targets TEAM aims—psych safety, role clarity, monthly coaching—aligned to the TEAM pillar.",
+          "paths": [
+            {
+              "id": "path-a",
+              "archetype": "A_SPEED",
+              "nextSliceId": "slice-clarity-owner-date",
+              "slices": [
+                {
+                  "id": "slice-clarity-owner-date",
+                  "title": "Enforce owner and due date on every task",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "team-role-clarity-cadence"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "team-role-clarity-cadence",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Tracker schema requires non-empty owner and due date on new tasks.",
+                    "Backfill all open tasks to include owner and due date.",
+                    "Spot-check 10 tasks: each shows both fields."
+                  ],
+                  "notes": "Implements the Role Clarity & Cadence policy.",
+                  "evidenceMicroIds": [
+                    "team-role-clarity-cadence-1"
+                  ],
+                  "callouts": {
+                    "negativeEffects": [
+                      {
+                        "aimId": "team-role-clarity-cadence",
+                        "risk": "Ambiguous ownership causes thrash and deadline drift",
+                        "severity": "high",
+                        "cluster": "TEAM",
+                        "weight": -0.6
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "slice-clarity-monday-priorities",
+                  "title": "Post Monday priorities by 10:00 with owner and due date",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "team-role-clarity-cadence"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "team-role-clarity-cadence",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Template created for Monday priorities post.",
+                    "Next Monday publish by 10:00 listing top 3 priorities per owner."
+                  ],
+                  "notes": "Weekly priorities reinforce clarity and predictable pace.",
+                  "evidenceMicroIds": [
+                    "team-role-clarity-cadence-2"
+                  ],
+                  "callouts": {
+                    "negativeEffects": [
+                      {
+                        "aimId": "team-role-clarity-cadence",
+                        "risk": "Unclear weekly focus increases context switching",
+                        "severity": "medium",
+                        "cluster": "TEAM",
+                        "weight": -0.6
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "path-b",
+              "archetype": "B_UX",
+              "nextSliceId": "slice-psych-checkins",
+              "slices": [
+                {
+                  "id": "slice-psych-checkins",
+                  "title": "Add 5-minute check-in rounds to two recurring meetings",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "team-psychological-safety-candor"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "team-psychological-safety-candor",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Two recurring meetings updated with 5-minute check-in agenda line.",
+                    "First week: both meetings open with the check-in round."
+                  ],
+                  "notes": "Small ritual normalizes voice and surfaces risks.",
+                  "evidenceMicroIds": [
+                    "team-psych-safety-candor-1"
+                  ],
+                  "callouts": {
+                    "negativeEffects": [
+                      {
+                        "aimId": "team-psychological-safety-candor",
+                        "risk": "Self-censorship hides risks until late",
+                        "severity": "high",
+                        "cluster": "TEAM",
+                        "weight": -0.7
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "slice-psych-redteam-rotation",
+                  "title": "Publish a three-month red-team rotation",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "team-psychological-safety-candor"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "team-psychological-safety-candor",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Red-team rota lists monthly reviewers for next 3 months.",
+                    "One upcoming decision tagged for a red-team stress test."
+                  ],
+                  "notes": "Formalizes dissent as expected and safe.",
+                  "evidenceMicroIds": [
+                    "team-psych-safety-candor-3"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "path-c",
+              "archetype": "C_ROI",
+              "nextSliceId": "slice-coaching-template",
+              "slices": [
+                {
+                  "id": "slice-coaching-template",
+                  "title": "Create 1:1 template (two strengths and one experiment)",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "team-growth-coaching"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "team-growth-coaching",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Template has sections: two strengths, one experiment, notes.",
+                    "Template link added to 100% of 1:1 calendar invites."
+                  ],
+                  "notes": "Captures strengths/experiments so growth compounds.",
+                  "evidenceMicroIds": [
+                    "team-growth-coaching-2"
+                  ],
+                  "callouts": {
+                    "negativeEffects": [
+                      {
+                        "aimId": "team-growth-coaching",
+                        "risk": "Coaching stays ad hoc and progress stalls",
+                        "severity": "medium",
+                        "cluster": "TEAM",
+                        "weight": -0.6
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "slice-coaching-schedule",
+                  "title": "Schedule 45-minute monthly 1:1s for all teammates",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "team-growth-coaching"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "team-growth-coaching",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Recurring 1:1 invite sent to every teammate.",
+                    "Next month’s sessions visible on calendars."
+                  ],
+                  "notes": "Predictable cadence makes coaching fair and effective.",
+                  "evidenceMicroIds": [
+                    "team-growth-coaching-1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "proj-revenue-predictable",
+          "title": "Make value compounding and cash predictable (REVENUE)",
+          "rationale": "Advances fair rewards, healthy unit economics, and diversification.",
+          "paths": [
+            {
+              "id": "path-a",
+              "archetype": "A_SPEED",
+              "nextSliceId": "slice-unit-econ-dashboard-skeleton",
+              "slices": [
+                {
+                  "id": "slice-unit-econ-dashboard-skeleton",
+                  "title": "Create unit economics dashboard skeleton (CAC, LTV, margin, burn)",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "revenue-unit-economics-runway"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "revenue-unit-economics-runway",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Single dashboard file with sections for CAC, LTV, margin, burn.",
+                    "Owner named for each metric section."
+                  ],
+                  "notes": "Centralizing core unit metrics stabilizes growth decisions.",
+                  "evidenceMicroIds": [
+                    "revenue-unit-econ-1"
+                  ],
+                  "callouts": {
+                    "negativeEffects": [
+                      {
+                        "aimId": "revenue-unit-economics-runway",
+                        "risk": "Missing metrics allow spend to outpace value",
+                        "severity": "high",
+                        "cluster": "REVENUE",
+                        "weight": -0.8
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "slice-finance-review-cadence",
+                  "title": "Add first-weekday 30-minute monthly finance review",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "revenue-unit-economics-runway"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "revenue-unit-economics-runway",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Recurring calendar event created for the first weekday each month.",
+                    "Agenda includes CAC, LTV, margin, and burn with next actions."
+                  ],
+                  "notes": "A fixed ritual improves decision speed and quality.",
+                  "evidenceMicroIds": [
+                    "revenue-unit-econ-2"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "path-b",
+              "archetype": "B_UX",
+              "nextSliceId": "slice-rewards-bands-levels",
+              "slices": [
+                {
+                  "id": "slice-rewards-bands-levels",
+                  "title": "Publish pay bands and levels doc",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "revenue-fair-transparent-rewards"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "revenue-fair-transparent-rewards",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Accessible document with bands and levels published.",
+                    "Link shared in a company-wide channel; view access confirmed."
+                  ],
+                  "notes": "Transparency reduces negotiation stress and perceived inequity.",
+                  "evidenceMicroIds": [
+                    "revenue-rewards-1"
+                  ],
+                  "callouts": {
+                    "negativeEffects": [
+                      {
+                        "aimId": "revenue-fair-transparent-rewards",
+                        "risk": "Perceived inequity drives attrition costs",
+                        "severity": "high",
+                        "cluster": "REVENUE",
+                        "weight": -0.7
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "slice-rewards-promo-criteria",
+                  "title": "Draft and publish promotion criteria",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "revenue-fair-transparent-rewards"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "revenue-fair-transparent-rewards",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Promotion criteria drafted and peer-reviewed.",
+                    "Criteria published or scheduled for publication with owners."
+                  ],
+                  "notes": "Clear criteria align raises with impact and reduce ambiguity.",
+                  "evidenceMicroIds": [
+                    "revenue-rewards-3"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "path-c",
+              "archetype": "C_ROI",
+              "nextSliceId": "slice-portfolio-reserve",
+              "slices": [
+                {
+                  "id": "slice-portfolio-reserve",
+                  "title": "Verify at least 6 months runway in reserve accounts",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "revenue-investment-portfolio"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "revenue-investment-portfolio",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Evidence captured showing ≥6 months cash.",
+                    "Owner named for monthly verification."
+                  ],
+                  "notes": "Liquidity buffer reduces shock impact and delivery interruptions.",
+                  "evidenceMicroIds": [
+                    "revenue-portfolio-1"
+                  ],
+                  "callouts": {
+                    "negativeEffects": [
+                      {
+                        "aimId": "revenue-investment-portfolio",
+                        "risk": "Cash shortfalls stall operations and raise costs",
+                        "severity": "high",
+                        "cluster": "REVENUE",
+                        "weight": -0.7
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "slice-portfolio-diversify",
+                  "title": "Split one critical vendor across two providers",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "revenue-investment-portfolio"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "revenue-investment-portfolio",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Vendor diversification checklist completed.",
+                    "One critical service running with two providers."
+                  ],
+                  "notes": "Diversification lowers risk concentration and downtime costs.",
+                  "evidenceMicroIds": [
+                    "revenue-portfolio-2"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "proj-customer-trust",
+          "title": "Learn fast and deliver outcomes people can feel (CUSTOMER)",
+          "rationale": "Supports expectations co-creation, early proof, and celebrating wins.",
+          "paths": [
+            {
+              "id": "path-a",
+              "archetype": "A_SPEED",
+              "nextSliceId": "slice-partnerships-success-criteria",
+              "slices": [
+                {
+                  "id": "slice-partnerships-success-criteria",
+                  "title": "Add success-criteria section to the project brief template",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "customer-trusting-partnerships"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "customer-trusting-partnerships",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Template updated with an Agreed Success Criteria field.",
+                    "One upcoming brief completed using the new section before kickoff."
+                  ],
+                  "notes": "Co-drafting expectations reduces early misalignment.",
+                  "evidenceMicroIds": [
+                    "customer-partnerships-1"
+                  ],
+                  "callouts": {
+                    "negativeEffects": [
+                      {
+                        "aimId": "customer-trusting-partnerships",
+                        "risk": "Misaligned expectations sour relationships early",
+                        "severity": "high",
+                        "cluster": "CUSTOMER",
+                        "weight": -0.7
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "path-b",
+              "archetype": "B_UX",
+              "nextSliceId": "slice-outcomes-demo-cadence",
+              "slices": [
+                {
+                  "id": "slice-outcomes-demo-cadence",
+                  "title": "Put next demo on calendar and set a two-week demo cadence",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "customer-outcome-proof"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "customer-outcome-proof",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Next demo within two weeks on calendar.",
+                    "Backlog identifies a working slice with acceptance notes."
+                  ],
+                  "notes": "Frequent demos let customers feel progress and steer early.",
+                  "evidenceMicroIds": [
+                    "customer-outcomes-1"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "path-c",
+              "archetype": "C_ROI",
+              "nextSliceId": "slice-celebrate-thankyou-template",
+              "slices": [
+                {
+                  "id": "slice-celebrate-thankyou-template",
+                  "title": "Create 48-hour customer thank-you template",
+                  "status": "ready",
+                  "effortDays": 1,
+                  "aimNodeIds": [
+                    "customer-celebrate-gratitude"
+                  ],
+                  "beliefEffects": [
+                    {
+                      "aimId": "customer-celebrate-gratitude",
+                      "weight": 0.6
+                    }
+                  ],
+                  "dependsOn": [],
+                  "dod": [
+                    "Template drafted and stored where the team can access it.",
+                    "Two recent milestones have drafts prepared within 48 hours."
+                  ],
+                  "notes": "Quick gratitude sustains momentum and deepen relationships.",
+                  "evidenceMicroIds": [
+                    "customer-celebrate-1"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
